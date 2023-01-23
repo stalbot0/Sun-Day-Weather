@@ -1,22 +1,24 @@
 $(document).ready(function() {
     mapboxgl.accessToken = MAPBOX_API_KEY;
 
+    //adds map with center being my home city
     const map = new mapboxgl.Map({
         container: "my-map",
         style: "mapbox://styles/mapbox/streets-v12",
         zoom: 10,
-        center: [-97.743676, 30.269374]
+        center: [-97.620004, 30.43937]
     });
 
+    //adds built-in mapbox zoom btns
+    map.addControl(new mapboxgl.NavigationControl());
 
 
+    // sets marker for pflugerville
     let marker = new mapboxgl.Marker()
-        .setLngLat([-97.743676, 30.269374])
+        .setLngLat([-97.620004, 30.43937])
         .addTo(map);
 
-    // find out where north star mall is and make a marker and popup for it
-    // the  geocode method from mapbox-geocoder-utils.js
-
+    // uses geocoder to log results of input address
     function pinThatAddress(address) {
         geocode(address, MAPBOX_API_KEY).then(function(result) {
             console.log(result);
@@ -32,11 +34,10 @@ $(document).ready(function() {
             console.log("Boom");
         });
     }
+    pinThatAddress("Pflugerville");
 
-    pinThatAddress("Perry's Steakhouse");
-
-    // reverse geocode method from mapbox-geocoder-utils.js
-    reverseGeocode({lng: -97.743676, lat: 30.269372}, MAPBOX_API_KEY).then(function(results) {
+    // reverse geocode to get info on lng and lat
+    reverseGeocode({lng: -97.620004, lat: 30.43937}, MAPBOX_API_KEY).then(function(results) {
         // logs the address for The Alamo
         console.log(results);
     });
