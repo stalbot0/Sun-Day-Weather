@@ -9,11 +9,11 @@ $(document).ready(function() {
         center: [-97.620004, 30.43937]
     });
 
-    //adds built-in mapbox zoom btns
+    //adds built-in mapbox zoom-btns
     map.addControl(new mapboxgl.NavigationControl());
 
-    // uses geocoder to log results of input address
-    function pinThatAddress(address) {
+    // function uses geocoder to log result and pin input address
+    function pinAddress(address) {
         geocode(address, MAPBOX_API_KEY).then(function(result) {
             console.log(result);
             const marker = new mapboxgl.Marker(
@@ -29,7 +29,16 @@ $(document).ready(function() {
             console.log("Boom");
         });
     }
-    // pinThatAddress("Pflugerville")
+
+    // gets the weather at this lat and lon
+    $.get('https://api.openweathermap.org/data/2.5/forecast', {
+            APPID: OPENWEATHER_API_KEY,
+            lat: 30.43937,
+            lon: -97.620004,
+            units: 'imperial',
+    }) .done(function (data) {
+        console.log(data);
+    });
 
 
     // reverse geocode to get info on lng and lat
