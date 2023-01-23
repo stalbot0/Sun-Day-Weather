@@ -3,7 +3,7 @@ $(document).ready(function() {
 
     //adds map with center being my home city
     const map = new mapboxgl.Map({
-        container: "my-map",
+        container: "weather-map",
         style: "mapbox://styles/mapbox/streets-v12",
         zoom: 10,
         center: [-97.620004, 30.43937]
