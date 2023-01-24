@@ -15,15 +15,28 @@
     </style>
 </head>
 <body>
-<h1>Sun-Day Weather</h1>
-<p>The best day to get outside!</p>
+<header>
+    <h1>Sun-Day Weather</h1>
+    <p>The best day to get outside!</p>
+</header>
+
+<div id="search-bar">
+    <form>
+        <label for="search-location-weather">Get The Weather By Location</label>
+        <input id="search-location-weather" type="text"
+               placeholder="City/State/Zip/Country">
+        <button id="search-btn">Search
+        </button>
+    </form>
+</div>
 
 <div class="container-fluid">
     <div id="weather-map"></div>
 </div>
+
 <div>
     <div id="weather-table-header"></div>
-  <div id="weather-table"></div>
+    <div id="weather-table"></div>
 </div>
 
 <!--Jquery Script // mapbox js // keys // geocoding library // custom js //bootstrap -->

@@ -28,8 +28,6 @@ $(document).ready(function () {
         });
     }
 
-    addMarker("Philadelphia");
-
     // gets the weather at this lat and lon
     function weatherData(result, marker) {
         // console.log(result);
@@ -71,4 +69,18 @@ $(document).ready(function () {
             }
         });
     }
+
+    //sets default to
+    // addMarker("San Antonio");
+
+    //adding search bar functionality
+    function weatherLocationSearch(e) {
+        e.preventDefault();
+        let userLocationSearch = $("#search-location-weather");
+        let newLocationSearch = userLocationSearch.focus().val()
+        console.log(newLocationSearch);
+        addMarker(newLocationSearch);
+    }
+
+    $("#search-btn").click(weatherLocationSearch);
 });
