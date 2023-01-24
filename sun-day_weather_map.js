@@ -16,45 +16,80 @@ $(document).ready(function () {
     function addMarker(address) {
         geocode(address, MAPBOX_API_KEY)
             .then(function (result) {
-                // console.log(result);
                 const marker = new mapboxgl.Marker({'color': '#CC5500',});
                 marker.setLngLat(result);
                 marker.addTo(map);
                 map.setZoom(9);
                 map.setCenter(result);
+                weatherData(result, marker);
 
-                const popup = new mapboxgl.Popup();
-                popup.setHTML(`${address}`);
-                marker.setPopup(popup);
             }).catch(function (error) {
             console.log("This location does not exist, please try somewhere else.");
         });
     }
 
+    addMarker("San Antonio, TX");
+
+    // function addPopUp(address, marker, weatherData) {
+    //     const popup = new mapboxgl.Popup();
+    //     // popup.setHTML(`${address}`); we want to set the DOM and the HTML in the weather data output
+    //     marker.setPopup(popup);
+    // }
+
     // gets the weather at this lat and lon
-    function weatherDataOutput() {
+    function weatherData(result, marker) {
+        // console.log(result);
         $.get('https://api.openweathermap.org/data/2.5/forecast', {
             APPID: OPENWEATHER_API_KEY,
-            lat: 30.43937,
-            lon: -97.620004,
+            lat: result[1],
+            lon: result[0],
             units: 'imperial',
-        })
-            .done(function (weatherData) {
-                addMarker(`${weatherData.city.name} ${weatherData.city.country}, 
-                   Current Conditions: ${weatherData.list[0].weather[0].description}, 
-                   Current Temp: 
-                   ${weatherData.list[0].main.temp}`);
-                console.log(weatherData);
-                //want to do something with the data
-                // console.log(weatherData.list[0].dt_txt);
-                // console.log(weatherData.list[0].main.temp);
-                // console.log(weatherData.list[0].main.feels_like);
-                // console.log(weatherData.list[0].main.temp_max);
-                // console.log(weatherData.list[0].main.temp_min);
-                // console.log(weatherData.list[0].weather[0].conditions);
-            });
+        }).done(function (weatherData) {
+            console.log(weatherData);
+
+            // set the popup data
+            const popup = new mapboxgl.Popup();
+            popup.setHTML(
+                `<h3>${weatherData.city.name}</h3>
+                <div>Current Conditions: ${weatherData.list[0].weather[0].description}</div>
+                <div>Current Temp: ${Math.round(weatherData.list[0].main.temp)}°F</div>
+               `
+            );
+            marker.setPopup(popup);
+
+
+            for (let i = 0; i <= 32; i++) {
+                var weatherDataDaily = '';
+                if (i === 0 || i % 8 === 0) {
+                    weatherDataDaily = `<div>
+                <h2>${weatherData.city.name} 5-Day Forecast</h2>
+                <hr>
+                <div>
+                    <div>Date: ${weatherData.list[0].dt_txt.substring(5, 10)}</div>
+                    <div>Temp: ${Math.round(weatherData.list[0].main.temp)}</div>
+                    <div>Feels like: ${Math.round(weatherData.list[0].main.feels_like)}</div>
+                    <div>Current Conditions: ${weatherData.list[0].weather[0].description}</div>
+                    <div>Max Temp ${Math.round(weatherData.list[0].main.temp_max)}</div>
+                    <div>Min Temp ${Math.round(weatherData.list[0].main.temp_min)}</div>
+                </div>
+                </div>`
+                    $('#weather-table').html(weatherDataDaily)
+                }
+                if (i % 8 !== 0) {
+                    // alert('invalid input');
+                }
+            }
+
+
+            //want to do something with the data
+            // console.log(weatherData.list[0].dt_txt);
+            // console.log(weatherData.list[0].main.temp);
+            // console.log(weatherData.list[0].main.feels_like);
+            // console.log(weatherData.list[0].main.temp_max);
+            // console.log(weatherData.list[0].main.temp_min);
+            // console.log(weatherData.list[0].weather[0].conditions);
+        });
     }
-    weatherDataOutput();
 
 
     // reverse geocode to get info on lng and lat
