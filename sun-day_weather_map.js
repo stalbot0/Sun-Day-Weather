@@ -28,13 +28,7 @@ $(document).ready(function () {
         });
     }
 
-    addMarker("San Antonio, TX");
-
-    // function addPopUp(address, marker, weatherData) {
-    //     const popup = new mapboxgl.Popup();
-    //     // popup.setHTML(`${address}`); we want to set the DOM and the HTML in the weather data output
-    //     marker.setPopup(popup);
-    // }
+    addMarker("Philadelphia");
 
     // gets the weather at this lat and lon
     function weatherData(result, marker) {
@@ -53,47 +47,28 @@ $(document).ready(function () {
                 `<h3>${weatherData.city.name}</h3>
                 <div>Current Conditions: ${weatherData.list[0].weather[0].description}</div>
                 <div>Current Temp: ${Math.round(weatherData.list[0].main.temp)}°F</div>
+                <div>Feels like: ${Math.round(weatherData.list[0].main.feels_like)}°F</div>
                `
             );
             marker.setPopup(popup);
 
-
+            //set the weather data to display a 5-day forecast
+            var weatherDataHeaderHTML = '';
+            weatherDataHeaderHTML = `<h2>${weatherData.city.name} 5-Day Forecast</h2>`;
+            $('#weather-table-header').html(weatherDataHeaderHTML);
+            var weatherDataDailyHTML = '';
             for (let i = 0; i <= 32; i++) {
-                var weatherDataDaily = '';
                 if (i === 0 || i % 8 === 0) {
-                    weatherDataDaily = `<div>
-                <h2>${weatherData.city.name} 5-Day Forecast</h2>
-                <hr>
+                weatherDataDailyHTML = `<div>
                 <div>
-                    <div>Date: ${weatherData.list[0].dt_txt.substring(5, 10)}</div>
-                    <div>Temp: ${Math.round(weatherData.list[0].main.temp)}</div>
-                    <div>Feels like: ${Math.round(weatherData.list[0].main.feels_like)}</div>
-                    <div>Current Conditions: ${weatherData.list[0].weather[0].description}</div>
-                    <div>Max Temp ${Math.round(weatherData.list[0].main.temp_max)}</div>
-                    <div>Min Temp ${Math.round(weatherData.list[0].main.temp_min)}</div>
+                    <div>Date: ${weatherData.list[i].dt_txt.substring(5, 10)}</div>
+                    <div>Conditions: ${weatherData.list[i].weather[0].description}</div>
+                    <div>Average Temp: ${Math.round(weatherData.list[i].main.temp)}°F</div>
                 </div>
                 </div>`
-                    $('#weather-table').html(weatherDataDaily)
-                }
-                if (i % 8 !== 0) {
-                    // alert('invalid input');
+                    $('#weather-table').append(weatherDataDailyHTML)
                 }
             }
-
-
-            //want to do something with the data
-            // console.log(weatherData.list[0].dt_txt);
-            // console.log(weatherData.list[0].main.temp);
-            // console.log(weatherData.list[0].main.feels_like);
-            // console.log(weatherData.list[0].main.temp_max);
-            // console.log(weatherData.list[0].main.temp_min);
-            // console.log(weatherData.list[0].weather[0].conditions);
         });
     }
-
-
-    // reverse geocode to get info on lng and lat
-    // reverseGeocode({lng: -97.620004, lat: 30.43937}, MAPBOX_API_KEY).then(function(results) {
-    //     console.log(results);
-    // });
 });
