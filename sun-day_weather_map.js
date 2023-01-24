@@ -16,7 +16,7 @@ $(document).ready(function () {
     function addMarker(address) {
         geocode(address, MAPBOX_API_KEY)
             .then(function (result) {
-                const marker = new mapboxgl.Marker({'color': '#CC5500',});
+                const marker = new mapboxgl.Marker({'color': '#868686',});
                 marker.setLngLat(result);
                 marker.addTo(map);
                 map.setZoom(9);
@@ -52,16 +52,17 @@ $(document).ready(function () {
 
             //set the weather data to display a 5-day forecast
             var weatherDataHeaderHTML = '';
-            weatherDataHeaderHTML = `<h2>${weatherData.city.name} 5-Day Forecast</h2>`;
+            weatherDataHeaderHTML = `<h2 class="five-day-forecast">${weatherData.city.name} 5-Day Forecast</h2>`;
             $('#weather-table-header').html(weatherDataHeaderHTML);
             $("#weather-table").html("");
             var weatherDataDailyHTML = '';
             for (let i = 0; i <= 32; i++) {
                 if (i === 0 || i % 8 === 0) {
-                    weatherDataDailyHTML =
-                        `<div>
-                             <div>
-                                <div>Date: ${weatherData.list[i].dt_txt.substring(5, 10)}</div>
+                    let date = new Date(weatherData.list[i].dt_txt);
+                    //console.log(date);
+                    weatherDataDailyHTML = `<div>
+                             <div class="container m-3 individual-weather-day weather-info-container">
+                                <div>${date.toDateString().substring(0, 10)}</div>                     
                                 <div>Conditions: ${weatherData.list[i].weather[0].description}</div>
                                 <div>Average Temp: ${Math.round(weatherData.list[i].main.temp)}°F</div>
                             </div>
