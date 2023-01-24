@@ -37,7 +37,7 @@ $(document).ready(function () {
             lon: result[0],
             units: 'imperial',
         }).done(function (weatherData) {
-            console.log(weatherData);
+            // console.log(weatherData);
 
             // set the popup data
             const popup = new mapboxgl.Popup();
@@ -54,31 +54,32 @@ $(document).ready(function () {
             var weatherDataHeaderHTML = '';
             weatherDataHeaderHTML = `<h2>${weatherData.city.name} 5-Day Forecast</h2>`;
             $('#weather-table-header').html(weatherDataHeaderHTML);
+            $("#weather-table").html("");
             var weatherDataDailyHTML = '';
             for (let i = 0; i <= 32; i++) {
                 if (i === 0 || i % 8 === 0) {
-                weatherDataDailyHTML = `<div>
-                <div>
-                    <div>Date: ${weatherData.list[i].dt_txt.substring(5, 10)}</div>
-                    <div>Conditions: ${weatherData.list[i].weather[0].description}</div>
-                    <div>Average Temp: ${Math.round(weatherData.list[i].main.temp)}°F</div>
-                </div>
-                </div>`
-                    $('#weather-table').append(weatherDataDailyHTML)
+                    weatherDataDailyHTML =
+                        `<div>
+                             <div>
+                                <div>Date: ${weatherData.list[i].dt_txt.substring(5, 10)}</div>
+                                <div>Conditions: ${weatherData.list[i].weather[0].description}</div>
+                                <div>Average Temp: ${Math.round(weatherData.list[i].main.temp)}°F</div>
+                            </div>
+                        </div>`
+                    $('#weather-table').append(weatherDataDailyHTML);
                 }
             }
         });
     }
 
-    //sets default to
-    // addMarker("San Antonio");
+    //sets default to San Antonio
+    addMarker("San Antonio");
 
     //adding search bar functionality
     function weatherLocationSearch(e) {
         e.preventDefault();
         let userLocationSearch = $("#search-location-weather");
         let newLocationSearch = userLocationSearch.focus().val()
-        console.log(newLocationSearch);
         addMarker(newLocationSearch);
     }
 
