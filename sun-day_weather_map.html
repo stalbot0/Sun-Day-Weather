@@ -9,24 +9,27 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.css">
     <link rel="stylesheet" href="sun-day_weather_map.css">
     <link href='https://api.mapbox.com/mapbox-gl-js/v2.12.0/mapbox-gl.css' rel='stylesheet'/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Cambay&family=Fraunces:opsz@9..144&display=swap" rel="stylesheet">
 </head>
+
 <body>
 <nav>
-    <header class="d-flex justify-content-between flex-wrap align-items-center">
+    <header class="d-flex justify-content-evenly flex-wrap align-items-center">
         <div class="ms-4">
-            <h1 class="header-h1 m-0 p-0">Sun-Day Weather</h1>
-            <p class="text-center m-0 p-0">The best day to get outside!</p>
+            <h1 class="header-h1 m-0 pe-4 text-center">Sun-Day Weather</h1>
+            <p class="text-center m-0 p-0 sub-header-p">The best day to get outside!</p>
         </div>
         <div id="search-bar" class="me-4">
             <div>
                 <i class="fa-solid fa-sun sun-header"></i>
             </div>
-            <form>
+            <form class="d-flex flex-wrap justify-content-evenly">
                 <label for="search-location-weather"></label>
                 <input id="search-location-weather" type="text"
                        placeholder="City/State/Zip/Country">
-                <button id="search-btn">Search
-                </button>
+                <button id="search-btn">Search</button>
             </form>
         </div>
     </header>

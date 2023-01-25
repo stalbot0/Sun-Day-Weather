@@ -53,9 +53,13 @@ $(document).ready(function () {
 
             //set the weather data to display a 5-day forecast
             var weatherDataHeaderHTML = '';
-            weatherDataHeaderHTML = `<h2 class="five-day-forecast">${weatherData.city.name} 5-Day Forecast</h2>`;
+            weatherDataHeaderHTML = `<div class="m-auto"><h2 class="five-day-forecast fraunces-font fs-1">${weatherData.city.name} 5-Day Forecast</h2><hr class="w-75 m-auto my-1">
+                                    <p class="text-center">Current Conditions: ${upperCase(weatherData.list[0].weather[0].description)}</p>
+                                    <p class="text-center">Current Temp: ${Math.round(weatherData.list[0].main.temp)}°F</p>
+                                    <p class="text-center">Feels like: ${Math.round(weatherData.list[0].main.feels_like)}°F</p></div>`;
             $('#weather-table-header').html(weatherDataHeaderHTML);
             $("#weather-table").html("");
+
             var weatherDataDailyHTML = '';
             for (let i = 0; i <= 32; i++) {
                 if (i === 0 || i % 8 === 0) {
@@ -64,12 +68,12 @@ $(document).ready(function () {
                     weatherDataDailyHTML =
                         `<div>
                              <div class="container m-3 individual-weather-day weather-info-container">
-                                <div>${date.toDateString().substring(0, 3)}, ${date.toDateString().substring(4, 7)} ${date.toDateString().substring(8, 10)}</div> 
+                                <div class="cambay-font fs-6 mt-3">${date.toDateString().substring(0, 3)}, ${date.toDateString().substring(4, 7)} ${date.toDateString().substring(8, 10)}</div> 
                                 <hr>    
                                 <div><img src="https://openweathermap.org/img/wn/${weatherData.list[i].weather[0].icon}@2x.png"></div>                
-                                <div>Conditions: ${weatherData.list[i].weather[0].description}</div>
-                                <div>Average Temp: ${Math.round(weatherData.list[i].main.temp)}°F</div>
-                                <div class="text-center">Humidity: ${Math.round(weatherData.list[0].main.humidity)}%</div>
+                                <div class="cambay-font fs-6">Conditions: ${upperCase(weatherData.list[i].weather[0].description)}</div>
+                                <div class="cambay-font fs-6">Average Temp: ${Math.round(weatherData.list[i].main.temp)}°F</div>
+                                <div class="text-center cambay-font fs-6">Humidity: ${Math.round(weatherData.list[0].main.humidity)}%</div>
                             </div>
                         </div>`
                     $('#weather-table').append(weatherDataDailyHTML);
@@ -90,4 +94,11 @@ $(document).ready(function () {
     }
 
     $("#search-btn").click(weatherLocationSearch);
+
+    //stolen function used to make the conditions uppercase from the weather data
+    function upperCase(str) {
+        return str.replace(/\w\S*/g, function(txt){
+            return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+        });
+    }
 });
