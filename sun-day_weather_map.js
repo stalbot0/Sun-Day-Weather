@@ -16,7 +16,7 @@ $(document).ready(function () {
     function addMarker(address) {
         geocode(address, MAPBOX_API_KEY)
             .then(function (result) {
-                const marker = new mapboxgl.Marker({'color': '#868686',});
+                const marker = new mapboxgl.Marker({'color': '#ffae00',});
                 marker.setLngLat(result);
                 marker.addTo(map);
                 map.setZoom(9);
@@ -37,7 +37,7 @@ $(document).ready(function () {
             lon: result[0],
             units: 'imperial',
         }).done(function (weatherData) {
-            // console.log(weatherData);
+            console.log(weatherData);
 
             // set the popup data
             const popup = new mapboxgl.Popup();
@@ -61,11 +61,15 @@ $(document).ready(function () {
                 if (i === 0 || i % 8 === 0) {
                     let date = new Date(weatherData.list[i].dt_txt);
                     //console.log(date);
-                    weatherDataDailyHTML = `<div>
+                    weatherDataDailyHTML =
+                        `<div>
                              <div class="container m-3 individual-weather-day weather-info-container">
-                                <div>${date.toDateString().substring(0, 10)}</div>                     
+                                <div>${date.toDateString().substring(0, 3)}, ${date.toDateString().substring(4, 7)} ${date.toDateString().substring(8, 10)}</div> 
+                                <hr>    
+                                <div><img src="https://openweathermap.org/img/wn/${weatherData.list[i].weather[0].icon}@2x.png"></div>                
                                 <div>Conditions: ${weatherData.list[i].weather[0].description}</div>
                                 <div>Average Temp: ${Math.round(weatherData.list[i].main.temp)}°F</div>
+                                <div class="text-center">Humidity: ${Math.round(weatherData.list[0].main.humidity)}%</div>
                             </div>
                         </div>`
                     $('#weather-table').append(weatherDataDailyHTML);
