@@ -26,7 +26,7 @@ $(document).ready(function () {
         var longitude = e.coords.longitude;
         var latitude = e.coords.latitude
         var result = [longitude, latitude];
-        const marker = new mapboxgl.Marker({'color': '#ffae00',});
+        const marker = new mapboxgl.Marker({'color': 'rgba(0,102,255,0.38)',});
         marker.setLngLat(result);
         marker.addTo(map);
         map.setZoom(12);
@@ -39,7 +39,7 @@ $(document).ready(function () {
     function addMarker(address) {
         geocode(address, MAPBOX_API_KEY)
             .then(function (result) {
-                const marker = new mapboxgl.Marker({'color': '#ffae00',});
+                const marker = new mapboxgl.Marker({'color': 'rgba(255,0,21,0.65)',});
                 marker.setLngLat(result);
                 marker.addTo(map);
                 map.setZoom(9);
@@ -48,7 +48,7 @@ $(document).ready(function () {
                 weatherData(result, marker);
 
             }).catch(function (error) {
-            console.log("This location does not exist, please try somewhere else.");
+            alert("This location does not exist, please try somewhere else.");
         });
     }
 
@@ -65,14 +65,11 @@ $(document).ready(function () {
 
             // set the popup data
             const popup = new mapboxgl.Popup();
-            popup.setHTML(
-                `<h3 class="text-center">${weatherData.city.name}</h3>
+            popup.setHTML(`<h3 class="text-center fraunces-font">${weatherData.city.name}</h3>
                 <hr>
-                <div class="text-center">Current Conditions: ${weatherData.list[0].weather[0].description}</div>
-                <div class="text-center">Current Temp: ${Math.round(weatherData.list[0].main.temp)}°F</div>
-                <div class="text-center">Feels like: ${Math.round(weatherData.list[0].main.feels_like)}°F</div>
-               `
-            );
+                <div class="text-center cambay-font">Current Conditions: ${weatherData.list[0].weather[0].description}</div>
+                <div class="text-center cambay-font">Current Temp: ${Math.round(weatherData.list[0].main.temp)}°F</div>
+                <div class="text-center cambay-font">Feels like: ${Math.round(weatherData.list[0].main.feels_like)}°F</div>`);
             marker.setPopup(popup);
 
             //set the weather data to display a 5-day forecast
