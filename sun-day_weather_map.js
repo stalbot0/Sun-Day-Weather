@@ -12,6 +12,29 @@ $(document).ready(function () {
     //adds built-in mapbox zoom-btns
     map.addControl(new mapboxgl.NavigationControl());
 
+    //adds built-in location
+    var geolocateControl = new mapboxgl.GeolocateControl({
+        positionOptions: {
+            enableHighAccuracy: true
+        },
+        trackUserLocation: true,
+        showUserHeading: true
+    });
+
+    map.addControl(geolocateControl);
+    geolocateControl.on("geolocate", function (e) {
+        var longitude = e.coords.longitude;
+        var latitude = e.coords.latitude
+        var result = [longitude, latitude];
+        const marker = new mapboxgl.Marker({'color': '#ffae00',});
+        marker.setLngLat(result);
+        marker.addTo(map);
+        map.setZoom(12);
+        map.setCenter(result);
+        weatherData(result, marker);
+    })
+
+
     // function uses geocoder to log result and pin input address
     function addMarker(address) {
         geocode(address, MAPBOX_API_KEY)
@@ -70,11 +93,11 @@ $(document).ready(function () {
                         `<div>
                              <div class="container m-3 individual-weather-day weather-info-container">
                                 <div class="cambay-font fs-6 mt-3">${date.toDateString().substring(0, 3)}, ${date.toDateString().substring(4, 7)} ${date.toDateString().substring(8, 10)}</div> 
-                                <hr>    
+                                <hr class="m-0">    
                                 <div><img src="https://openweathermap.org/img/wn/${weatherData.list[i].weather[0].icon}@2x.png"></div>                
                                 <div class="cambay-font fs-6">Conditions: ${upperCase(weatherData.list[i].weather[0].description)}</div>
                                 <div class="cambay-font fs-6">Average Temp: ${Math.round(weatherData.list[i].main.temp)}°F</div>
-                                <div class="text-center cambay-font fs-6">Humidity: ${Math.round(weatherData.list[0].main.humidity)}%</div>
+                                <div class="text-center cambay-font fs-6">Humidity: ${Math.round(weatherData.list[i].main.humidity)}%</div>
                             </div>
                         </div>`
                     $('#weather-table').append(weatherDataDailyHTML);
@@ -84,13 +107,13 @@ $(document).ready(function () {
     }
 
     //sets default to San Antonio
-    addMarker("San Antonio");
+    addMarker("New York");
 
     //adding search bar functionality
     function weatherLocationSearch(e) {
         e.preventDefault();
         let userLocationSearch = $("#search-location-weather");
-        let newLocationSearch = userLocationSearch.focus().val()
+        let newLocationSearch = (userLocationSearch.focus().val());
         addMarker(newLocationSearch);
     }
 
@@ -103,17 +126,17 @@ $(document).ready(function () {
         });
     }
 
-// setting the gif to display when window is loading
-    var loadingGif = $(".loading-gif").style
-    loadingGif.backgroundImage = "url('loading-gif.gif')";
-    loadingGif.style.display = "none";
-
-    window.onload = function () {
-        loadingGif.display = "block";
-    };
-
-    document.addEventListener("DOMContentLoaded", function () {
-        loadingGif.display = "none";
-    });
+// // setting the gif to display when window is loading
+//     var loadingGif = $(".loading-gif").style
+//     loadingGif.backgroundImage = "url('loading-gif.gif')";
+//     loadingGif.display = "none";
+//
+//     window.onload = function () {
+//         loadingGif.display = "block";
+//     };
+//
+//     document.addEventListener("DOMContentLoaded", function () {
+//         loadingGif.display = "none";
+//     });
 
 });

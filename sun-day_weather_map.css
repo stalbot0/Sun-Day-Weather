@@ -38,7 +38,7 @@ body {
 #weather-table {
     margin: 1em 2em;
     padding: 2em 0;
-    background-image: linear-gradient(to top left, rgba(0, 25, 68, 0.66), #01018a);
+    background-image: linear-gradient(to top left, rgba(0, 25, 68, 0.66), #020281);
     border: 1px solid white;
     border-radius: 1em;
     display: flex;
@@ -49,7 +49,7 @@ body {
 .individual-weather-day {
     border: 1px solid white;
     border-radius: 0.5em;
-    width: 14em;
+    width: 11em;
     height: 13em;
     text-align: center;
     font-size: 1.25em;
@@ -63,7 +63,14 @@ body {
 }
 
 nav {
-    background-image: linear-gradient(to bottom right, rgba(255, 213, 0, 0.36), rgba(0, 25, 68, 0.66));
+    background-image: linear-gradient(to bottom, rgba(255, 213, 0, 0.44), rgba(0, 25, 68, 0.66));
+    border-bottom: 1px solid rgb(255, 204, 0);;
+    border-radius: 0.1em;
+    padding: 2em 0;
+}
+
+footer {
+    background-image: linear-gradient(to top, rgba(255, 213, 0, 0.44), rgba(0, 25, 68, 0.66));
     border-bottom: 1px solid rgb(255, 204, 0);;
     border-radius: 0.1em;
     padding: 2em 0;
