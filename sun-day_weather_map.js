@@ -42,10 +42,11 @@ $(document).ready(function () {
             // set the popup data
             const popup = new mapboxgl.Popup();
             popup.setHTML(
-                `<h3>${weatherData.city.name}</h3>
-                <div>Current Conditions: ${weatherData.list[0].weather[0].description}</div>
-                <div>Current Temp: ${Math.round(weatherData.list[0].main.temp)}°F</div>
-                <div>Feels like: ${Math.round(weatherData.list[0].main.feels_like)}°F</div>
+                `<h3 class="text-center">${weatherData.city.name}</h3>
+                <hr>
+                <div class="text-center">Current Conditions: ${weatherData.list[0].weather[0].description}</div>
+                <div class="text-center">Current Temp: ${Math.round(weatherData.list[0].main.temp)}°F</div>
+                <div class="text-center">Feels like: ${Math.round(weatherData.list[0].main.feels_like)}°F</div>
                `
             );
             marker.setPopup(popup);
