@@ -53,7 +53,7 @@ body {
     height: 13em;
     text-align: center;
     font-size: 1.25em;
-    background-color: rgba(134, 134, 134, 0.25);
+    background-image: linear-gradient(to bottom, rgba(243, 240, 240, 0.02), rgba(243, 240, 240, 0.25));
 }
 
 .sun-header {
@@ -63,14 +63,14 @@ body {
 }
 
 nav {
-    background-image: linear-gradient(to bottom, rgba(255, 213, 0, 0.44), rgba(0, 25, 68, 0.66));
+    background-image: linear-gradient(to bottom, rgba(255, 221, 0, 0.48), rgba(0, 25, 68, 0.66));
     border-bottom: 1px solid rgb(255, 204, 0);;
     border-radius: 0.1em;
     padding: 2em 0;
 }
 
 footer {
-    background-image: linear-gradient(to top, rgba(255, 213, 0, 0.44), rgba(0, 25, 68, 0.66));
+    background-image: linear-gradient(to top, rgba(255, 213, 0, 0.48), rgba(0, 25, 68, 0.66));
     border-bottom: 1px solid rgb(255, 204, 0);;
     border-radius: 0.1em;
     padding: 2em 0;
