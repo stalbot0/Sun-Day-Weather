@@ -12,34 +12,35 @@
 </head>
 <body>
 <nav>
-<header class="d-flex justify-content-between flex-wrap">
-    <div class="d-flex align-items-center">
-        <i class="fa-solid fa-sun sun-header"></i>
-    </div>
-    <div class="align-items-center">
-        <h1 class="header-h1 mt-3">Sun-Day Weather</h1>
-        <p class="text-center">The best day to get outside!</p>
-    </div>
-    <div id="search-bar" class="">
-        <form class="">
-            <label for="search-location-weather"></label>
-            <input id="search-location-weather" type="text"
-                   placeholder="City/State/Zip/Country">
-            <button id="search-btn">Search
-            </button>
-        </form>
-    </div>
-</header>
+    <header class="d-flex justify-content-between flex-wrap align-items-center">
+        <div class="ms-4">
+            <h1 class="header-h1 m-0 p-0">Sun-Day Weather</h1>
+            <p class="text-center m-0 p-0">The best day to get outside!</p>
+        </div>
+        <div id="search-bar" class="me-4">
+            <div>
+                <i class="fa-solid fa-sun sun-header"></i>
+            </div>
+            <form>
+                <label for="search-location-weather"></label>
+                <input id="search-location-weather" type="text"
+                       placeholder="City/State/Zip/Country">
+                <button id="search-btn">Search
+                </button>
+            </form>
+        </div>
+    </header>
 </nav>
+<main>
+    <div>
+        <div id="weather-table-header"></div>
+        <div id="weather-table"></div>
+    </div>
 
-<div class="container-fluid d-flex justify-content-center mt-4">
-    <div id="weather-map"></div>
-</div>
-
-<div>
-    <div id="weather-table-header"></div>
-    <div id="weather-table"></div>
-</div>
+    <div class="container-fluid d-flex justify-content-center my-4">
+        <div id="weather-map"></div>
+    </div>
+</main>
 
 <!--Jquery Script // mapbox js // keys // geocoding library // custom js //bootstrap -->
 <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="

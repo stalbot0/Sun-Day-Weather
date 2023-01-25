@@ -11,7 +11,7 @@
 #weather-table-header {
     text-align: center;
     margin: 1em 3.5em;
-    background-image: linear-gradient(to top left, rgba(0, 25, 68, 0.66), #01018a);
+    background-image: linear-gradient(to top left, rgba(0, 25, 68, 0.66), rgba(1, 1, 138, 0.78));
     border: 1px solid white;
     border-radius: 0.5em;
     display: flex;
@@ -56,12 +56,13 @@ body {
 
 .sun-header {
     margin: 0.25em;
-    font-size: 8em;
+    font-size: 3em;
     color: rgb(255, 204, 0);
 }
 
 nav {
-    background-image: linear-gradient(to bottom right, rgba(255, 174, 0, 0.44), rgba(0, 25, 68, 0.66));
+    background-image: linear-gradient(to bottom right, rgba(255, 213, 0, 0.36), rgba(0, 25, 68, 0.66));
     border-bottom: 1px solid #ffae00;
     border-radius: 0.1em;
+    padding: 4em 0;
 }
