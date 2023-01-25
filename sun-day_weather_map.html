@@ -10,13 +10,13 @@
     <link href='https://api.mapbox.com/mapbox-gl-js/v2.12.0/mapbox-gl.css' rel='stylesheet'/>
 </head>
 <body>
-<header class="row">
-    <div class="col-7">
-        <h1 class="text-center main-h1">Sun-Day Weather</h1>
+<header class="d-flex justify-content-around flex-wrap">
+    <div class="align-items-center">
+        <h1 class="header-h1">Sun-Day Weather</h1>
         <p class="text-center">The best day to get outside!</p>
     </div>
-    <div id="search-bar" class="col-5">
-        <form>
+    <div id="search-bar" class="">
+        <form class="">
             <label for="search-location-weather"></label>
             <input id="search-location-weather" type="text"
                    placeholder="City/State/Zip/Country">
@@ -26,7 +26,7 @@
     </div>
 </header>
 
-<div class="container-fluid">
+<div class="container-fluid d-flex justify-content-center">
     <div id="weather-map"></div>
 </div>
 
