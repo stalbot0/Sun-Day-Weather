@@ -37,6 +37,7 @@ body {
 
 #weather-table {
     margin: 1em 2em;
+    padding: 2em 0;
     background-image: linear-gradient(to top left, rgba(0, 25, 68, 0.66), #01018a);
     border: 1px solid white;
     border-radius: 1em;

@@ -21,6 +21,7 @@ $(document).ready(function () {
                 marker.addTo(map);
                 map.setZoom(9);
                 map.setCenter(result);
+
                 weatherData(result, marker);
 
             }).catch(function (error) {
@@ -97,8 +98,22 @@ $(document).ready(function () {
 
     //stolen function used to make the conditions uppercase from the weather data
     function upperCase(str) {
-        return str.replace(/\w\S*/g, function(txt){
+        return str.replace(/\w\S*/g, function (txt) {
             return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
         });
     }
+
+// setting the gif to display when window is loading
+    var loadingGif = $(".loading-gif").style
+    loadingGif.backgroundImage = "url('loading-gif.gif')";
+    loadingGif.style.display = "none";
+
+    window.onload = function () {
+        loadingGif.display = "block";
+    };
+
+    document.addEventListener("DOMContentLoaded", function () {
+        loadingGif.display = "none";
+    });
+
 });
