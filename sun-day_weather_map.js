@@ -98,7 +98,7 @@ $(document).ready(function () {
                     //console.log(date);
                     weatherDataDailyHTML =
                         `<div>
-                             <div class="container m-3 individual-weather-day weather-info-container">
+                             <div class="container m-3 individual-weather-day weather-info-container animated-weather-card">
                                 <div class="cambay-font fs-6 mt-3">${date.toDateString().substring(0, 3)}, ${date.toDateString().substring(4, 7)} ${date.toDateString().substring(8, 10)}</div> 
                                 <hr class="m-0">    
                                 <div><img src="https://openweathermap.org/img/wn/${weatherData.list[i].weather[0].icon}@2x.png"></div>                

@@ -127,3 +127,11 @@ i:hover {
 .cambay-font {
     font-family: 'Cambay', sans-serif;
 }
+
+.animated-weather-card {
+    transition: all .2s ease-in-out;
+}
+
+.animated-weather-card:hover {
+    transform: scale(1.05);
+}
