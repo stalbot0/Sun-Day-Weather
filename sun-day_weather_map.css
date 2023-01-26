@@ -57,7 +57,7 @@ i:hover {
 #weather-table {
     margin: 1em 2em;
     padding: 2em 0;
-    background-image: linear-gradient(to top left, rgba(0, 25, 68, 0.66), #020281);
+    background-image: linear-gradient(to top, rgba(0, 25, 68, 0.66), #020281);
     border: 1px solid white;
     border-radius: 1em;
     display: flex;
