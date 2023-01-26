@@ -78,19 +78,19 @@ i:hover {
     font-family: 'Cambay', sans-serif;
     font-size: 1em;
     font-weight: bolder;
+    color: white;
     padding: 0;
-    color: #f5f1f1;
     border-radius: 0.5em;
     max-width: 70%;
-    height: 20px;
+    height: 30px;
 }
 
 #search-location-weather {
-    max-width: 20em;
+    max-width: 18em;
 }
 
 .needs-validation {
-    max-width: 20em;
+    max-width: 18em;
 }
 
 .individual-weather-day {

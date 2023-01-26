@@ -48,14 +48,15 @@ $(document).ready(function () {
 
                 // this function is called to use the result and the marker in teh weather data function in order to display the html
                 weatherData(result, marker);
+                $('#invalid-feedback').html("");
 
             }).catch(function (error) {
             console.log("This location does not exist, please try a different location.");
             var errorHTML = '';
             errorHTML = `<div class="control-group error w-50 mx-auto">
-                            <div class="p-0 my-0 mx-auto">Please try again</div>
+                            <div class="p-0 my-0 mx-auto text-decoration-underline bg-danger rounded-2">Invalid input</div>
                         </div>`
-            $('#invalid-feedback').html(errorHTML);
+            $('#invalid-feedback').append(errorHTML);
         });
     }
 
