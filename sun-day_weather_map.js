@@ -12,7 +12,7 @@ $(document).ready(function () {
     //adds built-in mapbox zoom-btns
     map.addControl(new mapboxgl.NavigationControl());
 
-    //adds built-in location
+    //adds built-in geolocator onto the map itself with position options
     var geolocateControl = new mapboxgl.GeolocateControl({
         positionOptions: {
             enableHighAccuracy: true
@@ -21,6 +21,7 @@ $(document).ready(function () {
         showUserHeading: true
     });
 
+    //adds the geolocator on the map which sets a marker for the users current location if they accept
     map.addControl(geolocateControl);
     geolocateControl.on("geolocate", function (e) {
         var longitude = e.coords.longitude;
@@ -45,14 +46,20 @@ $(document).ready(function () {
                 map.setZoom(9);
                 map.setCenter(result);
 
+                // this function is called to use the result and the marker in teh weather data function in order to display the html
                 weatherData(result, marker);
 
             }).catch(function (error) {
             console.log("This location does not exist, please try a different location.");
+            var errorHTML = '';
+            errorHTML = `<div class="control-group error w-50 mx-auto">
+                            <div class="p-0 my-0 mx-auto">Please try again</div>
+                        </div>`
+            $('#invalid-feedback').html(errorHTML);
         });
     }
 
-    // gets the weather at this lat and lon
+    // gets the weather at this lat and lon and adds all the data to the html
     function weatherData(result, marker) {
         // console.log(result);
         $.get('https://api.openweathermap.org/data/2.5/forecast', {
@@ -63,16 +70,16 @@ $(document).ready(function () {
         }).done(function (weatherData) {
             console.log(weatherData);
 
-            // set the popup data
+            // set the popup data for the
             const popup = new mapboxgl.Popup();
             popup.setHTML(`<h3 class="text-center fraunces-font">${weatherData.city.name}</h3>
                 <hr>
-                <div class="text-center cambay-font">Current Conditions: ${weatherData.list[0].weather[0].description}</div>
+                <div class="text-center cambay-font">Current Conditions: ${upperCase(weatherData.list[0].weather[0].description)}</div>
                 <div class="text-center cambay-font">Current Temp: ${Math.round(weatherData.list[0].main.temp)}°F</div>
                 <div class="text-center cambay-font">Feels like: ${Math.round(weatherData.list[0].main.feels_like)}°F</div>`);
             marker.setPopup(popup);
 
-            //set the weather data to display a 5-day forecast
+            //set the weather data to display a 5-day forecast HEADER, changing the html each time the search is done
             var weatherDataHeaderHTML = '';
             weatherDataHeaderHTML = `<div class="m-auto"><h2 class="five-day-forecast fraunces-font fs-1">${weatherData.city.name} 5-Day Forecast</h2><hr class="w-75 m-auto my-1">
                                     <p class="text-center cambay-font fs-5">Current Conditions: ${upperCase(weatherData.list[0].weather[0].description)}</p>
@@ -81,6 +88,8 @@ $(document).ready(function () {
             $('#weather-table-header').html(weatherDataHeaderHTML);
             $("#weather-table").html("");
 
+            // created variable that would append to the html with the 5-day forecase once conditions are met
+            //used modulus 8 due to the API keys being restricted to 3 hour intervals for each index in the object array
             var weatherDataDailyHTML = '';
             for (let i = 0; i <= 32; i++) {
                 if (i === 0 || i % 8 === 0) {
@@ -103,7 +112,7 @@ $(document).ready(function () {
         });
     }
 
-    //sets default to San Antonio
+    //sets default to any city
     addMarker("New York");
 
     //adding search bar functionality

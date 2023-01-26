@@ -1,3 +1,31 @@
+body {
+    background-color: rgb(1, 29, 80);
+    color: rgba(225, 222, 222, 0.97);
+}
+
+nav {
+    background-image: linear-gradient(to bottom, rgba(255, 221, 0, 0.48), rgba(0, 25, 68, 0.66));
+    border-bottom: 1px solid rgb(255, 204, 0);;
+    border-radius: 0.1em;
+    padding: 2em 0;
+}
+
+footer {
+    background-image: linear-gradient(to top, rgba(255, 213, 0, 0.48), rgba(0, 25, 68, 0.66));
+    border-top: 1px solid rgb(255, 204, 0);;
+    border-radius: 0.1em;
+    padding: 2em 0;
+}
+
+i {
+    color: white;
+    transition: all .2s ease-in-out;
+}
+
+i:hover {
+    transform: scale(1.5);
+}
+
 #weather-map {
     width: 75%;
     /*height: 300px;*/
@@ -11,7 +39,7 @@
 #weather-table-header {
     text-align: center;
     margin: 1em auto;
-    background-image: linear-gradient(to top left, rgba(0, 25, 68, 0.66), rgba(1, 1, 138, 0.78));
+    background-image: linear-gradient(to bottom, rgba(0, 25, 68, 0.66), #020281, rgba(243, 240, 240, 0.25));
     border: 1px solid white;
     border-radius: 0.5em;
     /*display: flex;*/
@@ -26,15 +54,6 @@
     align-items: center;
 }
 
-.five-day-forecast {
-    font-family: "Bodoni 72 Oldstyle", serif;
-}
-
-body {
-    background-color: rgb(1, 29, 80);
-    color: rgba(225, 222, 222, 0.97);
-}
-
 #weather-table {
     margin: 1em 2em;
     padding: 2em 0;
@@ -44,6 +63,34 @@ body {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
+}
+
+#search-btn {
+    font-family: 'Cambay', sans-serif;
+    background-color: rgba(0, 25, 68, 0.66);
+    border: 2px solid white;
+    color: white;
+    font-size: 1em;
+    margin: 2px
+}
+
+#invalid-feedback {
+    font-family: 'Cambay', sans-serif;
+    font-size: 1em;
+    font-weight: bolder;
+    padding: 0;
+    color: #f5f1f1;
+    border-radius: 0.5em;
+    max-width: 70%;
+    height: 20px;
+}
+
+#search-location-weather {
+    max-width: 20em;
+}
+
+.needs-validation {
+    max-width: 20em;
 }
 
 .individual-weather-day {
@@ -60,28 +107,6 @@ body {
     margin: 0.25em;
     font-size: 5em;
     color: rgb(255, 204, 0);
-}
-
-nav {
-    background-image: linear-gradient(to bottom, rgba(255, 221, 0, 0.48), rgba(0, 25, 68, 0.66));
-    border-bottom: 1px solid rgb(255, 204, 0);;
-    border-radius: 0.1em;
-    padding: 2em 0;
-}
-
-footer {
-    background-image: linear-gradient(to top, rgba(255, 213, 0, 0.48), rgba(0, 25, 68, 0.66));
-    border-bottom: 1px solid rgb(255, 204, 0);;
-    border-radius: 0.1em;
-    padding: 2em 0;
-}
-
-#search-btn {
-    font-family: 'Cambay', sans-serif;
-    background-color: rgba(0, 25, 68, 0.66);
-    border: 2px solid white;
-    color: white;
-    font-size: 1em;
 }
 
 .header-h1 {
