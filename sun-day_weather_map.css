@@ -69,6 +69,7 @@ i:hover {
     font-family: 'Cambay', sans-serif;
     background-color: rgba(0, 25, 68, 0.66);
     border: 2px solid white;
+    border-radius: 0.5em;
     color: white;
     font-size: 1em;
     margin: 2px
