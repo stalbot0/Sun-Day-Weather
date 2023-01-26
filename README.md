@@ -1,23 +1,33 @@
-# cloud-n9ne-weather
-Cloud N9ne Weather is a weather map application that allows users to get a 5-day forecast for a specific location. Simply place a pin on the map, or search for your desired location, and the application will display the current temperature, and a 5-day forecast for that location
+# Sun-Day-Weather
+Welcome to Sun-Day-Weather, a web application that provides you with detailed weather information for your location.
 
 ## Features
-- 5-day forecast for any location
-- Current temperatures
-- Pin placement on map
+- Real-time weather data for your current location
+- 5-day forecast for your location
+- Option to search for weather information
 
 ## How to use
-1. Open the application and wait for the map to load
-2. Place a pin on the location you would like to get the forecast for
-3. The current temperature will be displayed above the map
-4. View the 5-day forecast, which includes the high and low temperature for each day
+1. Go to the website link of the application or run the application on your localhost
+2. Allow the application to access your location (if desired when prompted)
+3. The application will automatically display the weather information for your current location when clicking the geolocation button on the interactive map
+4. To search for weather information for a different location, use the search bar at the top of the page and enter any location
+5. Browse through the page to view the current forecast, 5-day forecast, and other weather information
+6. Technologies Used: OpenWeatherMap API
 
 ## Tips
 - Zoom in on the map for more accurate pin placement
-- The forecast updates automatically when the pin is moved to a new location
+- This application uses the OpenWeatherMap API to retrieve weather data. A free API key is required to run the application. You can sign up for a free API key at https://openweathermap.org/api
+
+## Contribution
+If you would like to contribute to this application, please feel free to submit a pull request.
 
 ## Support
 If you have any questions or issues with the application, please refresh your page
 
-## Conclusion
-Cloud N9ne Weather is a simple and easy-to-use weather map application that provides a 5-day forecast for any location. Whether you're planning a trip or just want to know the weather for the week, Cloud N9ne Weather has got you covered
+## Bugs
+If you encounter any bugs or issues while using the application, please submit an issue on the GitHub repository.
+
+## Contact
+For any other questions or feedback, please contact the developer at stephen.clark.talbot@gmail.com
+
+Thank you for using Sun-Day-Weather!
