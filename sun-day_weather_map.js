@@ -56,7 +56,7 @@ $(document).ready(function () {
             errorHTML = `<div class="control-group error w-50 mx-auto">
                             <div class="p-0 my-0 mx-auto text-decoration-underline bg-danger rounded-2">Invalid input</div>
                         </div>`
-            $('#invalid-feedback').append(errorHTML);
+            $('#invalid-feedback').html(errorHTML);
         });
     }
 
