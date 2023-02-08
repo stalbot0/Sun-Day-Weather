@@ -137,7 +137,7 @@ $(document).ready(function () {
 //     var loadingGif = $(".loading-gif").style
 //     loadingGif.backgroundImage = "url('loading-gif.gif')";
 //     loadingGif.display = "none";
-//
+//e
 //     window.onload = function () {
 //         loadingGif.display = "block";
 //     };
