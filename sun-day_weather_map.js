@@ -1,4 +1,4 @@
-$(document).ready(function () {
+document.addEventListener("DOMContentLoaded", function() {
     mapboxgl.accessToken = MAPBOX_API_KEY;
 
     //adds map with starting center point position
@@ -30,7 +30,7 @@ $(document).ready(function () {
         const marker = new mapboxgl.Marker({'color': 'rgba(0,102,255,0.38)',});
         marker.setLngLat(result);
         marker.addTo(map);
-        map.setZoom(12);
+        map.setZoom(8);
         map.setCenter(result);
         weatherData(result, marker);
     })
@@ -40,10 +40,11 @@ $(document).ready(function () {
     function addMarker(address) {
         geocode(address, MAPBOX_API_KEY)
             .then(function (result) {
+                console.log(result);
                 const marker = new mapboxgl.Marker({'color': 'rgba(255,0,21,0.65)',});
                 marker.setLngLat(result);
                 marker.addTo(map);
-                map.setZoom(9);
+                map.setZoom(13);
                 map.setCenter(result);
 
                 // this function is called to use the result and the marker in teh weather data function in order to display the html
